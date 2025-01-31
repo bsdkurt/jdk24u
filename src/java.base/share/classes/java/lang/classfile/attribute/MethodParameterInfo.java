@@ -53,8 +53,7 @@ public sealed interface MethodParameterInfo
     Optional<Utf8Entry> name();
 
     /**
-     * {@return the access flags, as a bit mask}  It is in the range of unsigned
-     * short, {@code [0, 0xFFFF]}.
+     * {@return the access flags, as a bit mask}
      *
      * @see Parameter#getModifiers()
      * @see AccessFlag.Location#METHOD_PARAMETER

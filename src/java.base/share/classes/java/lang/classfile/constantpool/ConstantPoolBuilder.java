@@ -467,9 +467,6 @@ public sealed interface ConstantPoolBuilder
 
     /**
      * {@return a {@link FloatEntry} describing the provided value}
-     * <p>
-     * All NaN values of the {@code float} may or may not be collapsed into a
-     * single {@linkplain Float#NaN "canonical" NaN value}.
      *
      * @param value the value
      * @see FloatEntry#floatValue() FloatEntry::floatValue
@@ -486,9 +483,6 @@ public sealed interface ConstantPoolBuilder
 
     /**
      * {@return a {@link DoubleEntry} describing the provided value}
-     * <p>
-     * All NaN values of the {@code double} may or may not be collapsed into a
-     * single {@linkplain Double#NaN "canonical" NaN value}.
      *
      * @param value the value
      * @see DoubleEntry#doubleValue() DoubleEntry::doubleValue

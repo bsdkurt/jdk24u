@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022, 2025, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2022, 2024, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -35,12 +35,9 @@ import static java.util.Objects.requireNonNull;
 
 /**
  * A transformation on streams of {@link ClassElement}.
- * <p>
- * Refer to {@link ClassFileTransform} for general guidance and caution around
- * the use of transforms for structures in the {@code class} file format.
  *
- * @see ClassModel
- * @see ClassFile#transformClass(ClassModel, ClassTransform)
+ * @see ClassFileTransform
+ *
  * @since 24
  */
 @FunctionalInterface
@@ -48,7 +45,7 @@ public non-sealed interface ClassTransform
         extends ClassFileTransform<ClassTransform, ClassElement, ClassBuilder> {
 
     /**
-     * A class transform that passes all elements to the builder.
+     * A class transform that sends all elements to the builder.
      */
     static final ClassTransform ACCEPT_ALL = new ClassTransform() {
         @Override
@@ -58,7 +55,7 @@ public non-sealed interface ClassTransform
     };
 
     /**
-     * Creates a stateful class transform from a {@link Supplier}.  The supplier
+     * Create a stateful class transform from a {@link Supplier}.  The supplier
      * will be invoked for each transformation.
      *
      * @param supplier a {@link Supplier} that produces a fresh transform object
@@ -70,7 +67,7 @@ public non-sealed interface ClassTransform
     }
 
     /**
-     * Creates a class transform that passes each element through to the builder,
+     * Create a class transform that passes each element through to the builder,
      * and calls the specified function when transformation is complete.
      *
      * @param finisher the function to call when transformation is complete
@@ -92,8 +89,8 @@ public non-sealed interface ClassTransform
     }
 
     /**
-     * Creates a class transform that passes each element through to the builder,
-     * except for those that the supplied {@link Predicate} returns true for.
+     * Create a class transform that passes each element through to the builder,
+     * except for those that the supplied {@link Predicate} is true for.
      *
      * @param filter the predicate that determines which elements to drop
      * @return the class transform
@@ -107,10 +104,8 @@ public non-sealed interface ClassTransform
     }
 
     /**
-     * Creates a class transform that transforms {@link MethodModel} elements
-     * with the supplied method transform for methods that the supplied {@link
-     * Predicate} returns true for, passing other elements through to the
-     * builder.
+     * Create a class transform that transforms {@link MethodModel} elements
+     * with the supplied method transform.
      *
      * @param filter a predicate that determines which methods to transform
      * @param xform the method transform
@@ -122,9 +117,8 @@ public non-sealed interface ClassTransform
     }
 
     /**
-     * Creates a class transform that transforms {@link MethodModel} elements
-     * with the supplied method transform, passing other elements through to the
-     * builder.
+     * Create a class transform that transforms {@link MethodModel} elements
+     * with the supplied method transform.
      *
      * @param xform the method transform
      * @return the class transform
@@ -134,10 +128,8 @@ public non-sealed interface ClassTransform
     }
 
     /**
-     * Creates a class transform that transforms the {@link CodeAttribute} (method body)
-     * of {@link MethodModel} elements with the supplied code transform for
-     * methods that the supplied {@link Predicate} returns true for, passing
-     * other elements through to the builder.
+     * Create a class transform that transforms the {@link CodeAttribute} (method body)
+     * of {@link MethodModel} elements with the supplied code transform.
      *
      * @param filter a predicate that determines which methods to transform
      * @param xform the code transform
@@ -149,9 +141,8 @@ public non-sealed interface ClassTransform
     }
 
     /**
-     * Creates a class transform that transforms the {@link CodeAttribute} (method body)
-     * of {@link MethodModel} elements with the supplied code transform, passing
-     * other elements through to the builder.
+     * Create a class transform that transforms the {@link CodeAttribute} (method body)
+     * of {@link MethodModel} elements with the supplied code transform.
      *
      * @param xform the code transform
      * @return the class transform
@@ -161,9 +152,8 @@ public non-sealed interface ClassTransform
     }
 
     /**
-     * Creates a class transform that transforms {@link FieldModel} elements
-     * with the supplied field transform, passing other elements through to the
-     * builder.
+     * Create a class transform that transforms {@link FieldModel} elements
+     * with the supplied field transform.
      *
      * @param xform the field transform
      * @return the class transform

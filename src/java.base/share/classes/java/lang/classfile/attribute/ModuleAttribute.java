@@ -81,8 +81,7 @@ public sealed interface ModuleAttribute
     ModuleEntry moduleName();
 
     /**
-     * {@return the module flags of the module, as a bit mask}  It is in the
-     * range of unsigned short, {@code [0, 0xFFFF]}.
+     * {@return the module flags of the module, as a bit mask}
      *
      * @see ModuleDescriptor#modifiers()
      * @see AccessFlag.Location#MODULE

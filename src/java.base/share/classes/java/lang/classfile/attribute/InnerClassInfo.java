@@ -68,8 +68,7 @@ public sealed interface InnerClassInfo
 
     /**
      * {@return a bit mask of flags denoting access permissions and properties
-     * of the inner class}  It is in the range of unsigned short, {@code [0,
-     * 0xFFFF]}.
+     * of the inner class}
      *
      * @see Class#getModifiers()
      * @see AccessFlag.Location#INNER_CLASS

@@ -49,7 +49,6 @@ import jdk.internal.classfile.impl.BoundAttribute;
  * being built.
  *
  * @see Attributes#code()
- * @see CodeModel
  * @jvms 4.7.3 The {@code Code} Attribute
  * @since 24
  */

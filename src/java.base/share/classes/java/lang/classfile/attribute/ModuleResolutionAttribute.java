@@ -78,8 +78,7 @@ public sealed interface ModuleResolutionAttribute
         permits BoundAttribute.BoundModuleResolutionAttribute, UnboundAttribute.UnboundModuleResolutionAttribute {
 
     /**
-     * {@return the module resolution flags}  It is in the range of unsigned
-     * short, {@code [0, 0xFFFF]}.
+     * {@return the module resolution flags}
      * <p>
      * The value of the resolution_flags item is a mask of flags used to denote
      * properties of module resolution. The flags are as follows:
