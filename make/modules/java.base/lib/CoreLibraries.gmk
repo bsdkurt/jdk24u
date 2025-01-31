@@ -28,7 +28,7 @@
 ################################################################################
 
 LIBVERIFY_OPTIMIZATION := HIGH
-ifeq ($(call isTargetOs, linux)+$(COMPILE_WITH_DEBUG_SYMBOLS), true+true)
+ifeq ($(call isTargetOs, linux bsd)+$(COMPILE_WITH_DEBUG_SYMBOLS), true+true)
   LIBVERIFY_OPTIMIZATION := LOW
 endif
 
@@ -69,6 +69,7 @@ $(eval $(call SetupJdkLibrary, BUILD_LIBJAVA, \
         -framework Foundation \
         -framework SystemConfiguration, \
     LIBS_windows := advapi32.lib ole32.lib shell32.lib version.lib, \
+    LIBS_bsd := $(LIBDL), \
 ))
 
 TARGETS += $(BUILD_LIBJAVA)
@@ -188,6 +189,7 @@ $(eval $(call SetupJdkLibrary, BUILD_LIBJLI, \
         -framework Cocoa \
         -framework Security, \
     LIBS_windows := advapi32.lib comctl32.lib user32.lib, \
+    LIBS_bsd := -pthread,\
     STATIC_LIB_EXCLUDE_OBJS := $(LIBJLI_STATIC_EXCLUDE_OBJS), \
 ))
 

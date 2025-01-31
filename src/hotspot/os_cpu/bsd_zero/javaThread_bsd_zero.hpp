@@ -96,9 +96,10 @@
  public:
   bool pd_get_top_frame_for_signal_handler(frame* fr_addr,
                                            void* ucontext,
-                                           bool isInJava) {
-    ShouldNotCallThis();
-    return false;
-  }
+                                           bool isInJava);
+
+  bool pd_get_top_frame_for_profiling(frame* fr_addr,
+                                      void* ucontext,
+                                      bool isInJava);
 
 #endif // OS_CPU_BSD_ZERO_JAVATHREAD_BSD_ZERO_HPP

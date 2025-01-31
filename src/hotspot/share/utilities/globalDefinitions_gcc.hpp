@@ -31,7 +31,9 @@
 // globally used constants & types, class (forward)
 // declarations and a few frequently used utility functions.
 
+#ifndef _BSDONLY_SOURCE
 #include <alloca.h>
+#endif
 #include <ctype.h>
 #include <inttypes.h>
 #include <string.h>
@@ -92,7 +94,7 @@ inline int g_isfinite(jdouble f)                 { return isfinite(f); }
 
 // Formatting.
 #ifdef _LP64
-# ifdef __APPLE__
+# if defined(__APPLE__) || defined(__OpenBSD__)
 # define FORMAT64_MODIFIER "ll"
 # else
 # define FORMAT64_MODIFIER "l"
@@ -118,10 +120,10 @@ inline int g_isfinite(jdouble f)                 { return isfinite(f); }
 }())
 
 
-#if defined(_LP64) && defined(__APPLE__)
+#if defined(_LP64) && defined(_ALLBSD_SOURCE)
 #define JLONG_FORMAT          "%ld"
 #define JLONG_FORMAT_W(width) "%" #width "ld"
-#endif // _LP64 && __APPLE__
+#endif // _LP64 && _ALLBSD_SOURCE
 
 #define THREAD_LOCAL __thread
 

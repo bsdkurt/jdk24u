@@ -28,14 +28,19 @@
 //
 // Declare Bsd specific flags. They are not available on other platforms.
 //
-#define RUNTIME_OS_FLAGS(develop,                                       \
-                         develop_pd,                                    \
-                         product,                                       \
-                         product_pd,                                    \
-                         range,                                         \
-                         constraint)                                    \
-                                                                        \
-  AARCH64_ONLY(develop(bool, AssertWXAtThreadSync, true,                \
+#define RUNTIME_OS_FLAGS(develop,     \
+                         develop_pd,  \
+                         product,     \
+                         product_pd,  \
+                         range,       \
+                         constraint)  \
+                                                    \
+  product(bool, UseHugeTLBFS, false,                \
+          "Use MAP_HUGETLB for large pages")        \
+                                                    \
+  product(bool, UseSHM, false,                      \
+          "Use SYSV shared memory for large pages") \
+  AARCH64_ONLY(develop(bool, AssertWXAtThreadSync, true,               \
           "Conservatively check W^X thread state at possible safepoint" \
           "or handshake"))
 
