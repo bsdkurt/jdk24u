@@ -170,6 +170,12 @@ ifeq ($(call isTargetOs, aix), true)
   BUILD_LIBJLI_TYPE := STATIC_LIBRARY
 endif
 
+ifeq ($(call isTargetOsEnv, bsd.openbsd), true)
+  # OpenBSD requires a static libjli because the runtime linker doesn't fully
+  # support $ORIGIN in '-rpath'
+  BUILD_LIBJLI_TYPE := STATIC_LIBRARY
+endif
+
 $(eval $(call SetupJdkLibrary, BUILD_LIBJLI, \
     NAME := jli, \
     TYPE := $(BUILD_LIBJLI_TYPE), \
